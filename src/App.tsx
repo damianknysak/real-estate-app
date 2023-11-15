@@ -11,18 +11,20 @@ import Header from "./components/Header";
 
 function App() {
   return (
-    <div className="App bg-black min-h-screen flex">
-      <Header />
-      <div className="m-10 bg-primary w-full rounded-xl">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/analytics" element={<Analytics />} />
-          <Route path="/generate" element={<Generate />} />
-          <Route path="/leads" element={<Leads />} />
-          <Route path="/syndication" element={<Syndication />} />
-        </Routes>
+    <main className="bg-black">
+      <div className="relative min-h-screen flex max-w-[2000px] mx-auto">
+        <Header />
+        <div className="m-10 bg-primary w-full rounded-xl">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/analytics" element={<Analytics />} />
+            <Route path="/generate" element={<Generate />} />
+            <Route path="/leads" element={<Leads />} />
+            <Route path="/syndication" element={<Syndication />} />
+          </Routes>
+        </div>
       </div>
-    </div>
+    </main>
   );
 }
 
