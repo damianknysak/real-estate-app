@@ -2,6 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .scrollbar::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: black;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: #1f1f1f;
+    border-radius: 100vh;
+    border: black 2px solid;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background:gray;
+  }
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

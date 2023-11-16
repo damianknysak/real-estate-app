@@ -1,5 +1,3 @@
-import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
@@ -11,10 +9,10 @@ import Header from "./components/Header";
 
 function App() {
   return (
-    <main className="bg-black">
-      <div className="relative min-h-screen flex max-w-[2000px] mx-auto">
+    <main className="bg-black overflow-hidden">
+      <div className="relative h-screen flex max-w-[2000px] mx-auto">
         <Header />
-        <div className="m-10 bg-primary w-full rounded-xl">
+        <div className="m-10 h-full bg-primary w-full rounded-xl">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/analytics" element={<Analytics />} />

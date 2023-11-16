@@ -5,8 +5,8 @@ import { FaRegBuilding } from "react-icons/fa";
 
 const RealEstateCard = () => {
   return (
-    <article className="w-72 bg-black rounded-lg p-2 border-2 border-secondary">
-      <div className="w-full h-40 bg-blue-500 rounded-lg"></div>
+    <article className="w-full h-64 bg-black rounded-lg p-2 border-2 border-secondary">
+      <div className="w-full h-32 bg-blue-500 rounded-lg"></div>
       <div className="flex justify-between mt-2 items-center">
         <span className=" text-white font-bold text-lg">
           Real estate website

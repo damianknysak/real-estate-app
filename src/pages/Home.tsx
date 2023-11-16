@@ -3,7 +3,7 @@ import RealEstateList from "../components/Home/RealEstateList";
 
 const Home = () => {
   return (
-    <div className="w-full h-full p-5">
+    <div className="w-full p-5 space-y-3">
       <section className="flex items-center justify-between">
         <h1 className="text-2xl font-bold bg-blue-gradient inline-block text-transparent bg-clip-text">
           Single Property Site <span className="text-white">List</span>
