@@ -30,7 +30,7 @@ const Header = () => {
       <Link
         to="/"
         className={`h-10 w-full ${
-          path === "/" ? "bg-blue-gradient" : ""
+          path === "/" ? "bg-blue-gradient" : "hover:bg-black transition-all"
         } flex items-center pl-3 space-x-2 rounded-lg`}
       >
         <RxDashboard color="white" size={20} />
@@ -39,7 +39,9 @@ const Header = () => {
       <Link
         to="/generate"
         className={`h-10 w-full ${
-          path === "/generate" ? "bg-blue-gradient" : ""
+          path === "/generate"
+            ? "bg-blue-gradient"
+            : "hover:bg-black transition-all"
         } flex items-center pl-3 space-x-2 rounded-lg`}
       >
         <HiOutlineBolt color="white" size={20} />
@@ -48,7 +50,9 @@ const Header = () => {
       <Link
         to="/analytics"
         className={`h-10 w-full ${
-          path === "/analytics" ? "bg-blue-gradient" : ""
+          path === "/analytics"
+            ? "bg-blue-gradient"
+            : "hover:bg-black transition-all"
         } flex items-center pl-3 space-x-2 rounded-lg`}
       >
         <MdOutlineAnalytics color="white" size={20} />
@@ -57,7 +61,9 @@ const Header = () => {
       <Link
         to="/syndication"
         className={`h-10 w-full ${
-          path === "/syndication" ? "bg-blue-gradient" : ""
+          path === "/syndication"
+            ? "bg-blue-gradient"
+            : "hover:bg-black transition-all"
         } flex items-center pl-3 space-x-2 rounded-lg`}
       >
         <TbMessage2 color="white" size={20} />
@@ -66,7 +72,9 @@ const Header = () => {
       <Link
         to="/leads"
         className={`h-10 w-full ${
-          path === "/leads" ? "bg-blue-gradient" : ""
+          path === "/leads"
+            ? "bg-blue-gradient"
+            : "hover:bg-black transition-all"
         } flex items-center pl-3 space-x-2 rounded-lg`}
       >
         <FiLayers color="white" size={20} />

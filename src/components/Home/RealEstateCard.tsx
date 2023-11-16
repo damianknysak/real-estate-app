@@ -2,23 +2,24 @@ import { IoLinkSharp, IoShareSocialOutline } from "react-icons/io5";
 import { BiExport } from "react-icons/bi";
 import { LuLayers, LuPencilLine } from "react-icons/lu";
 import { FaRegBuilding } from "react-icons/fa";
+import { RealEstateCardProps } from "./RealEstateList";
 
-const RealEstateCard = () => {
+const RealEstateCard: React.FC<RealEstateCardProps> = ({
+  title,
+  imgUrl,
+  address,
+}) => {
   return (
     <article className="w-full h-64 bg-black rounded-lg p-2 border-2 border-secondary">
       <div className="w-full h-32 bg-blue-500 rounded-lg"></div>
       <div className="flex justify-between mt-2 items-center">
-        <span className=" text-white font-bold text-lg">
-          Real estate website
-        </span>
+        <span className=" text-white font-bold text-lg">{title}</span>
         <button className="p-1.5 bg-secondary rounded-full transition-all duration-500 hover:bg-blue-gradient">
           <IoShareSocialOutline color="white" size={20} />
         </button>
       </div>
       <div>
-        <span className="text-gray-500 text-xs">
-          38W street NY, New York (2000 sqft)
-        </span>
+        <span className="text-gray-500 text-xs">{address}</span>
       </div>
       <div className="border border-secondary my-2" />
       <div className="flex items-center justify-between">
