@@ -1,7 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import RealEstateList from "../components/Home/RealEstateList";
+import { useLoginMutation } from "../redux/api/auth";
+import { User } from "../types/user.types";
+import { useDispatch, useSelector } from "react-redux";
+import { selectUser, setCredentials } from "../redux/user/userSlice";
 
 const Home = () => {
+  const [login] = useLoginMutation();
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
+  const handleLogin = async () => {
+    const res: any = await login({
+      email: "damian11rs@onet.pl",
+      password: "test123",
+    });
+
+    dispatch(setCredentials({ ...res.data }));
+  };
+
   return (
     <div className="w-full p-5 space-y-3">
       <section className="flex items-center justify-between">
@@ -9,8 +25,11 @@ const Home = () => {
           Single Property Site <span className="text-white">List</span>
         </h1>
         <div className="bg-secondary text-sm  border border-gray-600 rounded-lg  w-44 flex justify-center">
-          <select className="!outline-none bg-secondary text-gray-500 text-sm block w-40 p-2.5">
-            <option selected>Filtering</option>
+          <select
+            defaultValue={"default"}
+            className="!outline-none bg-secondary text-gray-500 text-sm block w-40 p-2.5"
+          >
+            <option value="default">Filtering</option>
             <option value="US">United States</option>
             <option value="CA">Canada</option>
             <option value="FR">France</option>

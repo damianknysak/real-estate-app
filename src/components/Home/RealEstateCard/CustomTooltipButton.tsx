@@ -31,7 +31,9 @@ const CustomTooltipButton: React.FC<{ title: string }> = ({ title }) => {
       } hover:bg-blue-gradient bg-secondary flex items-center justify-center `}
     >
       <Tooltip title={title}>
-        <SmallButton title={title} />
+        <div>
+          <SmallButton title={title} />
+        </div>
       </Tooltip>
     </div>
   );

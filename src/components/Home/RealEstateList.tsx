@@ -105,13 +105,15 @@ const RealEstateList = () => {
   return (
     <>
       <div className="grid grid-cols-5 gap-x-8 gap-2 h-[calc(100vh-180px)] pr-2 overflow-y-scroll scrollbar">
-        {REAL_ESTATE_LIST.elements.map((element) => {
+        {REAL_ESTATE_LIST.elements.map((element, index) => {
           return (
-            <RealEstateCard
-              imgUrl={element.imgUrl}
-              title={element.title}
-              address={element.address}
-            />
+            <React.Fragment key={index}>
+              <RealEstateCard
+                imgUrl={element.imgUrl}
+                title={element.title}
+                address={element.address}
+              />
+            </React.Fragment>
           );
         })}
       </div>
