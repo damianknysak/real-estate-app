@@ -36,4 +36,5 @@ export default userSlice.reducer;
 
 export const { setCredentials, logout } = userSlice.actions;
 
-export const selectUser = (state: UserSliceStateProps) => state.user;
+export const selectUser = (state: { user: UserSliceStateProps }) =>
+  state.user.user;

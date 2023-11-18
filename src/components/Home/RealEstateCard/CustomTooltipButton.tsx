@@ -25,17 +25,15 @@ const SmallButton = React.forwardRef<HTMLButtonElement, SmallButtonProps>(
 
 const CustomTooltipButton: React.FC<{ title: string }> = ({ title }) => {
   return (
-    <div
-      className={`${
-        title === "Share" ? `w-8 h-8 rounded-full` : `w-6 h-6  rounded`
-      } hover:bg-blue-gradient bg-secondary flex items-center justify-center `}
-    >
-      <Tooltip title={title}>
-        <div>
-          <SmallButton title={title} />
-        </div>
-      </Tooltip>
-    </div>
+    <Tooltip title={title}>
+      <div
+        className={`${
+          title === "Share" ? `w-8 h-8 rounded-full` : `w-6 h-6  rounded`
+        } hover:bg-blue-gradient bg-secondary flex items-center justify-center `}
+      >
+        <SmallButton title={title} />
+      </div>
+    </Tooltip>
   );
 };
 

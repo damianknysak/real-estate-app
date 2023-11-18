@@ -6,10 +6,12 @@ import Generate from "./pages/Generate";
 import Leads from "./pages/Leads";
 import Syndication from "./pages/Syndication";
 import Header from "./components/Header";
+import Modals from "./components/Shared/Modals/Modals";
 
 function App() {
   return (
     <main className="bg-black overflow-hidden">
+      <Modals />
       <div className="relative h-screen flex max-w-[2000px] mx-auto">
         <Header />
         <div className="m-10 h-full bg-primary w-full rounded-xl">

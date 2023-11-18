@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import RealEstateList from "../components/Home/RealEstateList";
 import { useLoginMutation } from "../redux/api/auth";
-import { User } from "../types/user.types";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser, setCredentials } from "../redux/user/userSlice";
 
@@ -17,6 +16,10 @@ const Home = () => {
 
     dispatch(setCredentials({ ...res.data }));
   };
+
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
 
   return (
     <div className="w-full p-5 space-y-3">
