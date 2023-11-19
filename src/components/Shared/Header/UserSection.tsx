@@ -46,6 +46,18 @@ const UserSection = () => {
         <>
           <button
             onClick={onLogoutClick}
+            className="w-40 h-14 mx-auto bg-secondary border border-gray-600 rounded-lg flex items-center p-2"
+          >
+            <div className="w-11 h-11 bg-blue-gradient rounded-lg"></div>
+            <div className="h-full flex-1 flex flex-col items-center justify-between">
+              <span className="text-xs text-white font-bold">
+                {user.firstName} {user.lastName}
+              </span>
+              <span className="text-xs text-gray-500">Customer</span>
+            </div>
+          </button>
+          <button
+            onClick={onLogoutClick}
             className="w-40 h-14 mx-auto bg-secondary border border-gray-600 rounded-lg flex items-center justify-center space-x-1"
           >
             <span className="font-bold bg-blue-gradient inline-block text-transparent bg-clip-text">
