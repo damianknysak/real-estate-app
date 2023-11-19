@@ -6,6 +6,11 @@ export interface LoginProps {
   password: string;
 }
 
+export interface RegisterProps extends LoginProps {
+  firstName: string;
+  lastName: string;
+}
+
 export const auth = api.injectEndpoints({
   endpoints: (build) => ({
     login: build.mutation({
@@ -19,7 +24,18 @@ export const auth = api.injectEndpoints({
         };
       },
     }),
+    register: build.mutation({
+      query: (credentials: RegisterProps) => {
+        return {
+          url: "/users/register",
+          method: "POST",
+          body: {
+            ...credentials,
+          },
+        };
+      },
+    }),
   }),
 });
 
-export const { useLoginMutation } = auth;
+export const { useLoginMutation, useRegisterMutation } = auth;
