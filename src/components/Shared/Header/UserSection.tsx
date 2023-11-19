@@ -2,6 +2,7 @@ import { FiLogIn, FiLogOut, FiUserPlus } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, selectUser } from "../../../redux/user/userSlice";
 import { useSearchParams } from "react-router-dom";
+import { BASE_API_ORIGIN } from "../../../redux/api/api";
 
 const UserSection = () => {
   const user = useSelector(selectUser);
@@ -48,7 +49,10 @@ const UserSection = () => {
             onClick={onLogoutClick}
             className="w-40 h-14 mx-auto bg-secondary border border-gray-600 rounded-lg flex items-center p-2"
           >
-            <div className="w-11 h-11 bg-blue-gradient rounded-lg"></div>
+            <img
+              className="w-11 h-11 object-cover rounded-lg"
+              src={`${BASE_API_ORIGIN}/${user.profileImage}`}
+            />
             <div className="h-full flex-1 flex flex-col items-center justify-between">
               <span className="text-xs text-white font-bold">
                 {user.firstName} {user.lastName}
