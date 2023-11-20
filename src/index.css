@@ -24,6 +24,14 @@
   }
 }
 
+.inside-btn {
+  box-shadow: inset 0px 0px 40px blue;
+}
+
+.outside-btn {
+  box-shadow: 0px 0px 100px blue;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

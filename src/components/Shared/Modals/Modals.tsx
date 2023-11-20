@@ -6,12 +6,16 @@ const Modals = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const isActive = searchParams.get("auth");
 
+  const deactivate = () => {
+    searchParams.delete("auth");
+    setSearchParams(searchParams);
+  };
+
   const handleCloseModal = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
     if (e.target === e.currentTarget) {
-      searchParams.delete("auth");
-      setSearchParams(searchParams);
+      deactivate();
     }
   };
 
@@ -27,12 +31,6 @@ const Modals = () => {
       {searchParams.get("auth") && (
         <AuthModal type={searchParams.get("auth")!} />
       )}
-
-      {/* <img
-        className="absolute w-full"
-        src={require("../../../assets/city.png")}
-        alt=""
-      /> */}
     </div>
   );
 };

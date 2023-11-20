@@ -5,11 +5,12 @@ import { TbMessage2 } from "react-icons/tb";
 import { FiLayers } from "react-icons/fi";
 import { FaPlus } from "react-icons/fa";
 
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 import UserSection from "./Shared/Header/UserSection";
 const Header = () => {
   const location = useLocation();
   const path = location.pathname;
+  const [searchParams, setSearchParams] = useSearchParams();
   return (
     <nav className="w-56 p-5 bg-primary flex flex-col justify-between">
       <div className="flex flex-col space-y-5">
@@ -19,14 +20,15 @@ const Header = () => {
           alt=""
         />
         <div className="h-11 w-full py-0.5 bg-blue-gradient rounded-lg flex items-center justify-center">
-          <button
+          <Link
+            to={"/add"}
             className={`h-10 w-full flex items-center pl-3 space-x-2 bg-primary/95 rounded-lg`}
           >
             <div className="bg-blue-gradient rounded-full p-1.5">
               <FaPlus color="white" size={15} />
             </div>
             <span className="text-white text-sm">Create new</span>
-          </button>
+          </Link>
         </div>
 
         <Link
