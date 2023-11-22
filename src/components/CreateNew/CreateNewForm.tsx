@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Property } from "../../types/property.types";
 import { FaChevronRight } from "react-icons/fa";
+import FormFirstPart from "./FormFirstPart";
+import FormSecondPart from "./FormSecondPart";
 
 const CreateNewForm = () => {
+  const [formPage, setFormPage] = useState(1);
   const [formData, setFormData] = useState<Property>({
     type: "Single-Family Home",
     name: "",
@@ -27,125 +30,39 @@ const CreateNewForm = () => {
     telephone: "",
   });
 
-  const handleTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      type: e.target.value as Property["type"],
-    });
+  const isFirstPageFilled =
+    formData.name && formData.description && formData.address ? true : false;
+
+  const handleContinueClick = () => {
+    console.log(isFirstPageFilled);
+    if (formPage === 1) {
+      isFirstPageFilled && setFormPage(2);
+    }
   };
 
   return (
     <div className="flex h-full">
-      <div className="space-y-5 flex-1">
-        {/* Sale or Rent */}
-        <div className="flex">
-          <button
-            onClick={() => {
-              setFormData((prevState) => {
-                return { ...prevState, cardType: "sell" };
-              });
-            }}
-            className={`w-24 h-12 text-white ${
-              formData.cardType === "sell" && "bg-blue-gradient"
-            } border border-gray-500`}
-          >
-            Sell
-          </button>
-          <button
-            onClick={() => {
-              setFormData((prevState) => {
-                return { ...prevState, cardType: "lease" };
-              });
-            }}
-            className={`w-24 h-12 text-white ${
-              formData.cardType === "lease" && "bg-blue-gradient"
-            } border border-gray-500`}
-          >
-            Rent
-          </button>
-        </div>
-
-        {/* Type of Property */}
-        <div className="space-y-3">
-          <span className="text-white text-xl">Type of Property</span>
-          <select
-            id="countries"
-            className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-secondary dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            onChange={(e) => handleTypeChange(e)}
-          >
-            {[
-              "Single-Family Home",
-              "Apartment",
-              "Condominium",
-              "Townhouse",
-              "Multi-Family Home",
-            ].map((option) => (
-              <option id={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
-        </div>
-        {/* Name */}
-        <div className="flex flex-col space-y-3">
-          <label className="text-xl text-white" htmlFor="name">
-            Title of listing
-          </label>
-          <input
-            onChange={(e) => {
-              setFormData((prevState) => {
-                return { ...prevState, name: e.target.value };
-              });
-            }}
-            className="h-10 text-white max-w-sm bg-secondary border px-3 border-gray-600 rounded-lg"
-            id="name"
-            type="text"
-            maxLength={50}
-            placeholder="Title ..."
-          />
-        </div>
-        {/* Desc */}
-        <div className="flex flex-col space-y-3">
-          <label className="text-xl text-white" htmlFor="name">
-            Description of listing
-          </label>
-          <textarea
-            onChange={(e) => {
-              setFormData((prevState) => {
-                return { ...prevState, description: e.target.value };
-              });
-            }}
-            className="h-32 text-white max-w-sm bg-secondary border p-3 border-gray-600 rounded-lg"
-            id="name"
-            maxLength={150}
-            placeholder="Description ..."
-          />
-        </div>
-        {/* Address */}
-        <div className="flex flex-col space-y-3">
-          <label className="text-xl text-white" htmlFor="name">
-            Address of property
-          </label>
-          <input
-            onChange={(e) => {
-              setFormData((prevState) => {
-                return { ...prevState, name: e.target.value };
-              });
-            }}
-            className="h-10 text-white max-w-sm bg-secondary border px-3 border-gray-600 rounded-lg"
-            id="name"
-            type="text"
-            maxLength={50}
-            placeholder="Address ..."
-          />
-        </div>
-      </div>
+      {formPage === 1 && (
+        <FormFirstPart formData={formData} setFormData={setFormData} />
+      )}
+      {formPage === 2 && (
+        <FormSecondPart formData={formData} setFormData={setFormData} />
+      )}
       <div className="flex-1 flex justify-center">
         <div className="flex -mt-72 space-y-4 flex-col items-center justify-center">
           <span className="text-2xl text-white font-bold">Continue</span>
 
-          <div className="outside-btn border-4 border-white h-[168px] rounded-full">
-            <button className="bg-secondary rounded-full w-40 h-40 inside-btn">
+          <div className="border-4 border-white h-[168px] rounded-full">
+            <button
+              onClick={() => {
+                handleContinueClick();
+              }}
+              className={`bg-secondary rounded-full w-40 h-40 ${
+                isFirstPageFilled && formPage === 1
+                  ? "pulse-neon-btn"
+                  : "neon-btn"
+              }`}
+            >
               <div className="flex items-center justify-center ">
                 <FaChevronRight size={40} color="white" />
               </div>
