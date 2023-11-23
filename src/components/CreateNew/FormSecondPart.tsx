@@ -24,7 +24,7 @@ const FormSecondPart: React.FC<{
             id="FloorSize"
             min={0}
             type="number"
-            defaultValue={0}
+            value={formData.floorSize}
           />
           <span className="text-white">m^2</span>
         </div>
@@ -43,7 +43,7 @@ const FormSecondPart: React.FC<{
           id="NumberOfRooms"
           min={0}
           type="number"
-          defaultValue={0}
+          value={formData.numberOfRooms}
         />
       </div>
       <div className="flex flex-col space-y-3">
@@ -61,7 +61,7 @@ const FormSecondPart: React.FC<{
           min={0}
           max={formData.numberOfRooms - formData.numberOfBathroomsTotal}
           type="number"
-          defaultValue={0}
+          value={formData.numberOfBedrooms}
         />
       </div>
       <div className="flex flex-col space-y-3">
@@ -82,7 +82,7 @@ const FormSecondPart: React.FC<{
           min={0}
           max={formData.numberOfRooms - formData.numberOfBedrooms}
           type="number"
-          defaultValue={0}
+          value={formData.numberOfBathroomsTotal}
         />
       </div>
       <div className="flex flex-col space-y-3">
@@ -110,7 +110,7 @@ const FormSecondPart: React.FC<{
               id="occupancyMin"
               min={0}
               type="number"
-              defaultValue={0}
+              value={formData.occupancy.maxValue}
             />
           </div>
           <div className="flex flex-col">

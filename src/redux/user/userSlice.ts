@@ -38,3 +38,6 @@ export const { setCredentials, logout } = userSlice.actions;
 
 export const selectUser = (state: { user: UserSliceStateProps }) =>
   state.user.user;
+
+export const selectToken = (state: { user: UserSliceStateProps }) =>
+  state.user.token;

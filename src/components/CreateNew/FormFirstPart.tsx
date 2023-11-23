@@ -48,6 +48,7 @@ const FormFirstPart: React.FC<{
           id="countries"
           className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-secondary dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           onChange={(e) => handleTypeChange(e)}
+          value={formData.type && formData.type}
         >
           {[
             "Single-Family Home",
@@ -78,6 +79,7 @@ const FormFirstPart: React.FC<{
           type="text"
           maxLength={50}
           placeholder="Title ..."
+          value={formData.name && formData.name}
         />
       </div>
       {/* Desc */}
@@ -95,6 +97,7 @@ const FormFirstPart: React.FC<{
           id="name"
           maxLength={150}
           placeholder="Description ..."
+          value={formData.description && formData.description}
         />
       </div>
       {/* Address */}
@@ -113,6 +116,7 @@ const FormFirstPart: React.FC<{
           type="text"
           maxLength={50}
           placeholder="Address ..."
+          value={formData.address && formData.address}
         />
       </div>
     </div>
