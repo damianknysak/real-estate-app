@@ -10,7 +10,8 @@ const FormNavButtons: React.FC<{
   formData: Property;
   formPage: number;
   setFormPage: React.Dispatch<SetStateAction<number>>;
-}> = ({ formData, formPage, setFormPage }) => {
+  files: any;
+}> = ({ formData, formPage, setFormPage, files }) => {
   const [sumbitFunc] = useAddListingMutation();
   const token = useSelector(selectToken);
   const handleContinueClick = () => {
@@ -27,11 +28,24 @@ const FormNavButtons: React.FC<{
     }
   };
   const handleSubmitClick = () => {
-    console.log(token);
-    if (token) {
-      isThirdPageFilled && sumbitFunc({ formData: formData, token: token });
+    if (token && isThirdPageFilled) {
+      const formDataToSubmit = new FormData();
+      // Dodaj pola formularza do FormData
+      Object.entries(formData).forEach(([key, value]) => {
+        if (value !== undefined && value !== null) {
+          formDataToSubmit.append(key, String(value));
+        }
+      });
+      if (files) {
+        for (const file of files) {
+          formDataToSubmit.append("image", file);
+        }
+      }
+
+      // Użyj funkcji submitFunc z nowym FormData
+      sumbitFunc({ formData: formDataToSubmit, token: token });
     } else {
-      //call to first login
+      // Wywołaj funkcję do pierwszego logowania
     }
   };
 

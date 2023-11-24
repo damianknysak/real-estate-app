@@ -1,7 +1,3 @@
-export interface Occupancy {
-  minValue: number;
-  maxValue: number;
-}
 export interface Property {
   type:
     | "Single-Family Home"
@@ -13,7 +9,6 @@ export interface Property {
   description: string;
   images: string[] | undefined;
   numberOfRooms: number;
-  occupancy: Occupancy;
   floorSize: number;
   cardType: "sell" | "lease";
   leaseLength?: number;
@@ -22,7 +17,7 @@ export interface Property {
   numberOfBathroomsTotal: number;
   numberOfBedrooms: number;
   permittedUsage: string;
-  petsAllowed: string;
+  petsAllowed: boolean;
   yearBuilt: number;
   address: string;
   telephone: string;

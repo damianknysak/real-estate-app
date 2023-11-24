@@ -4,7 +4,11 @@ import { Property } from "../../types/property.types";
 const FormThirdPart: React.FC<{
   formData: Property;
   setFormData: React.Dispatch<SetStateAction<Property>>;
-}> = ({ formData, setFormData }) => {
+  setFiles: React.Dispatch<SetStateAction<any>>;
+}> = ({ formData, setFormData, setFiles }) => {
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFiles([...e.target.files!]);
+  };
   return (
     <div className="space-y-5 flex-1">
       FINAL INFO
@@ -25,6 +29,29 @@ const FormThirdPart: React.FC<{
           placeholder="Usage ..."
           value={formData.permittedUsage}
         />
+      </div>
+      {/* Pets allowed */}
+      <div className="space-y-3">
+        <span className="text-white text-xl">Are pets allowed?</span>
+        <select
+          onChange={(e) => {
+            setFormData((prevState) => {
+              return {
+                ...prevState,
+                petsAllowed: e.target.value === "false" ? false : true,
+              };
+            });
+          }}
+          id="countries"
+          className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-secondary dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          value={formData.petsAllowed ? "true" : "false"}
+        >
+          {["false", "true"].map((option) => (
+            <option key={option} id={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
       </div>
       {/* Lease Length */}
       {formData.cardType === "lease" && (
@@ -96,6 +123,34 @@ const FormThirdPart: React.FC<{
           </div>
         </div>
       )}
+      {/* Telephone */}
+      <div className="flex flex-col space-y-3">
+        <label className="text-xl text-white" htmlFor="Telephone">
+          Telephone number
+        </label>
+        <input
+          onChange={(e) => {
+            setFormData((prevState) => {
+              return { ...prevState, telephone: e.target.value };
+            });
+          }}
+          className="h-10 text-white max-w-sm bg-secondary border px-3 border-gray-600 rounded-lg"
+          id="Telephone"
+          type="text"
+          maxLength={50}
+          placeholder="Telephone ..."
+          value={formData.telephone}
+        />
+      </div>
+      <label>
+        Obraz:
+        <input
+          type="file"
+          multiple
+          name="image"
+          onChange={(e) => handleImageChange(e)}
+        />
+      </label>
     </div>
   );
 };

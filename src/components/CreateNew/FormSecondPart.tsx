@@ -8,6 +8,24 @@ const FormSecondPart: React.FC<{
   return (
     <div className="space-y-5 flex-1">
       BUILDING INFO
+      {/* Year built */}
+      <div className="flex flex-col space-y-3">
+        <label className="text-xl text-white" htmlFor="yearBuilt">
+          Year built of building
+        </label>
+        <input
+          onChange={(e) => {
+            setFormData((prevState) => {
+              return { ...prevState, yearBuilt: Number(e.target.value) };
+            });
+          }}
+          className="h-10 text-white w-32 bg-secondary border px-3 border-gray-600 rounded-lg"
+          id="yearBuilt"
+          min={0}
+          type="number"
+          value={formData.yearBuilt}
+        />
+      </div>
       {/* FloorSize */}
       <div className="flex flex-col space-y-3">
         <label className="text-xl text-white" htmlFor="FloorSize">
@@ -84,63 +102,6 @@ const FormSecondPart: React.FC<{
           type="number"
           value={formData.numberOfBathroomsTotal}
         />
-      </div>
-      <div className="flex flex-col space-y-3">
-        <label className="text-xl text-white" htmlFor="occupancyMin">
-          Ocuppancy
-        </label>
-        <div className="flex">
-          <div className="flex flex-col">
-            <label className="text-xs text-white" htmlFor="occupancyMin">
-              Ocuppancy min. value
-            </label>
-            <input
-              onChange={(e) => {
-                setFormData((prevState) => {
-                  return {
-                    ...prevState,
-                    occupancy: {
-                      minValue: Number(e.target.value),
-                      maxValue: formData.occupancy.maxValue,
-                    },
-                  };
-                });
-              }}
-              className="h-10 text-white w-32 bg-secondary border px-3 border-gray-600 rounded-lg"
-              id="occupancyMin"
-              min={0}
-              type="number"
-              value={formData.occupancy.maxValue}
-            />
-          </div>
-          <div className="flex flex-col">
-            <label className="text-xs text-white" htmlFor="occupancyMax">
-              Ocuppancy max. value
-            </label>
-            <input
-              onChange={(e) => {
-                setFormData((prevState) => {
-                  return {
-                    ...prevState,
-                    occupancy: {
-                      maxValue: Number(e.target.value),
-                      minValue: formData.occupancy.minValue,
-                    },
-                  };
-                });
-              }}
-              className="h-10 text-white w-32 bg-secondary border px-3 border-gray-600 rounded-lg"
-              id="occupancyMax"
-              min={formData.occupancy.minValue}
-              type="number"
-              value={
-                formData.occupancy.minValue > formData.occupancy.maxValue
-                  ? formData.occupancy.minValue
-                  : formData.occupancy.maxValue
-              }
-            />
-          </div>
-        </div>
       </div>
     </div>
   );

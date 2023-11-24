@@ -13,10 +13,6 @@ const CreateNewForm = () => {
     description: "",
     images: undefined,
     numberOfRooms: 0,
-    occupancy: {
-      minValue: 0,
-      maxValue: 0,
-    },
     floorSize: 0,
     cardType: "sell",
     leaseLength: undefined,
@@ -25,11 +21,12 @@ const CreateNewForm = () => {
     numberOfBathroomsTotal: 0,
     numberOfBedrooms: 0,
     permittedUsage: "",
-    petsAllowed: "",
+    petsAllowed: false,
     yearBuilt: 2010,
     address: "",
     telephone: "",
   });
+  const [files, setFiles] = useState<any[]>();
 
   return (
     <div className="flex h-full">
@@ -40,12 +37,17 @@ const CreateNewForm = () => {
         <FormSecondPart formData={formData} setFormData={setFormData} />
       )}
       {formPage === 3 && (
-        <FormThirdPart formData={formData} setFormData={setFormData} />
+        <FormThirdPart
+          formData={formData}
+          setFormData={setFormData}
+          setFiles={setFiles}
+        />
       )}
       <FormNavButtons
         formData={formData}
         formPage={formPage}
         setFormPage={setFormPage}
+        files={files}
       />
     </div>
   );
